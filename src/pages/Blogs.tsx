@@ -7,7 +7,7 @@ export const Blogs = () => {
     const { loading, blogs } = useBlogs();
 
     if (loading) {
-        return <div>
+        return <div className="h-full w-full bg-dot-white/[0.2] relative bg-neutral-800  justify-center overflow-auto">
             <Appbar /> 
             <div  className="flex justify-center">
                 <div>
@@ -21,7 +21,7 @@ export const Blogs = () => {
         </div>
     }
 
-    return <div>
+    return <div className="h-full w-full bg-dot-white/[0.12] relative bg-neutral-800 justify-center overflow-auto">
         <Appbar />
         <div  className="flex justify-center">
             <div>

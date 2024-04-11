@@ -4,12 +4,7 @@ import {  SignupInput } from "@rakeshpaulraj/medium-clone-types";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import toast, { Toaster } from "react-hot-toast"
-type messageType  = string | {
-    issues : {
-        code: string,
-        message: string
-    }[]
-}
+
 
 export const  SignupCard = () => {
     const navigate = useNavigate();
@@ -28,51 +23,38 @@ export const  SignupCard = () => {
             const jwt = response.data.jwt;
             localStorage.setItem("token", jwt);
             navigate("/blogs");
-            toast.success("Successfully signed in", {
-                style: {
-                    minWidth: '250px',
-                    backgroundColor: '#18181b',
-                    color: '#d4d4d8',
+            toast.promise(
+                Promise.resolve(response), // Wrap response in a resolved promise
+                {
+                    loading: "Signing in...",
+                    error: "Error Signing in",
+                    success: "Successfully Signed in",
                 },
-            });
-        } catch (err: any) {
-            if (err.response && err.response.data && err.response.data.message) {
-                const message: messageType = err.response.data.message;
-                if (typeof message === 'string') {
-                    toast.error(message, {
-                        style: {
-                            minWidth: '250px',
-                            backgroundColor: '#18181b',
-                            color: '#d4d4d8',
-                        },});
-                } else if (Array.isArray(message.issues)) {
-                    const errorMessage = message.issues.map(issue => issue.message).join("\n");
-            toast.error(errorMessage, {
-                style: {
-                    minWidth: '250px',
-                    backgroundColor: '#18181b',
-                    color: '#d4d4d8',
-                },
-            });
-        } else {
-            toast.error("Error while signing up", {
-                style: {
-                    minWidth: '250px',
-                    backgroundColor: '#18181b',
-                    color: '#d4d4d8',
-                },
-            });
+                {
+                    style: {
+                        minWidth: '250px',
+                        backgroundColor: '#18181b',
+                        color: '#d4d4d8',
+                    },
+                }
+            );
+        } catch (err:any) {
+            console.log(err.response.data);
+            toast.error(
+                // Wrap response in a resolved promise
+                
+                    "Error Signing up",
+        
+                {
+                    style: {
+                        minWidth: '250px',
+                        backgroundColor: '#18181b',
+                        color: '#d4d4d8',
+                    },
+                }
+            );
         }
-    } else {
-        toast.error("Error while signing up", {
-            style: {
-                minWidth: '250px',
-                backgroundColor: '#18181b',
-                color: '#d4d4d8',
-            },
-        });
     }
-}}
 
     return <div className="h-screen flex justify-center items-center">
         <div className="h-[470px] w-[360px] bg-neutral-950 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">
