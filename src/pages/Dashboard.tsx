@@ -3,7 +3,7 @@ import { BlogCard } from "../components/BlogCard"
 import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks";
 
-export const Blogs = () => {
+export const Dashboard = () => {
     const { loading, blogs } = useBlogs();
 
     if (loading) {
@@ -21,10 +21,10 @@ export const Blogs = () => {
         </div>
     }
 
-    return <div className="h-full w-full bg-dot-white/[0.12] relative bg-neutral-800 justify-center overflow-auto">
+    return <div className="h-full w-full bg-dot-white/[0.2] relative  bg-black/[0.98] flex flex-col items-center justify-center overflow-auto">
         <Appbar />
-        <div  className="flex justify-center">
-            <div>
+        <div className="flex justify-center">
+            <div className="mt-16">
                 {blogs.map(blog => <BlogCard
                     id={blog.id}
                     authorName={blog.author.name || "Anonymous"}

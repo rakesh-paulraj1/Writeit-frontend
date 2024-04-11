@@ -20,7 +20,7 @@ export const  SigninCard = () => {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs);
             const jwt = response.data.jwt;
             localStorage.setItem("token", jwt);
-            navigate("/blogs ");
+            navigate("/dashboard ");
             toast.promise(
                 Promise.resolve(response),
                 {
@@ -39,7 +39,7 @@ export const  SigninCard = () => {
             } catch (err:any) {
                 console.log(err.response.data);
                 toast.error(
-                    // Wrap response in a resolved promise
+                    
                     
                         "Error Signing in",
             
