@@ -7,10 +7,10 @@ export const Dashboard = () => {
     const { loading, blogs } = useBlogs();
 
     if (loading) {
-        return <div className="h-full w-full bg-dot-white/[0.2] relative bg-neutral-800  justify-center overflow-auto">
+        return <div className="h-full w-full bg-dot-white/[0.2] relative  bg-black/[0.98]  justify-center overflow-auto">
             <Appbar /> 
             <div  className="flex justify-center">
-                <div>
+                <div className="mt-16">
                     <BlogSkeleton />
                     <BlogSkeleton />
                     <BlogSkeleton />

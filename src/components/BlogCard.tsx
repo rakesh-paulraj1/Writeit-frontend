@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { cn } from "../utils/cn"
+
 interface BlogCardProps {
     authorName: string;
     title: string;
