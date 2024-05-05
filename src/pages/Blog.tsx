@@ -12,10 +12,10 @@ export const Blog = () => {
     });
 
     if (loading || !blog) {
-        return <div>
+        return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">
             <Appbar />
         
-            <div className="h-screen flex flex-col justify-center">
+            <div className=" h-screen flex flex-col justify-center">
                 
                 <div className="flex justify-center">
                     <Spinner />

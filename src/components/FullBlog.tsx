@@ -1,13 +1,13 @@
 import { Blog } from "../hooks"
 import { Appbar } from "./Appbar"
-import { Avatar } from "./BlogCard"
+
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
-    return <div>
+    return <div className=" h-screen w-full bg-dot-white/[0.2] relative   bg-black/[0.98]  ">
         <Appbar />
-        <div className="flex justify-center">
+        <div className=" pt-16 flex justify-center overflow-auto">
             <div className="grid grid-cols-12 px-10 w-full pt-200 max-w-screen-xl pt-12">
-                <div className="col-span-8">
+                <div className="col-span-8 text-white prose prose-invert bg-neutral-900 p-5 pb-10 rounded-lg ">
                     <div className="text-5xl font-extrabold">
                         {blog.title}
                     </div>
@@ -19,23 +19,18 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                     </div>
                 </div>
                 <div className="col-span-4">
-                    <div className="text-slate-600  text-lg">
-                        Author
-                    </div>
-                    <div className="flex w-full">
-                        <div className="pr-4 flex flex-col justify-center">
-                            <Avatar size="big" name={blog.author.name || "Anonymous"} />
-                        </div>
-                        <div>
-                            <div className="text-xl font-bold">
-                                {blog.author.name || "Anonymous"}
-                            </div>
-                            <div className="pt-2 text-slate-500">
-                                Random catch phrase about the author's ability to grab the user's attention
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+                <div className="text-white bg-neutral-900 p-5 rounded-lg shadow-xl">
+            <div className="text-2xl md:text-4xl pb-5">
+                Author
+            </div>
+            <div className="flex items-center">
+                <div className="w-5 h-5 p-4 mr-4 text-black text-lg md:text-xl flex justify-center items-center bg-white rounded-full ">{blog.author.name.toUpperCase()[0]}</div>
+                <div className="tex-lg md:text-xl mr-2">{blog.author.name}</div>
+                
+            </div>
+
+        </div>
+        </div>
                 
             </div>
         </div>

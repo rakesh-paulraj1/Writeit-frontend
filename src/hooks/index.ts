@@ -11,6 +11,26 @@ export interface Blog {
         "name": string
     }
 }
+export const Profileblog= ({id}: {id: string}) => {
+    const [loading, setLoading] = useState(true);
+    const [pblog, setPblog] = useState<Blog>();
+
+    
+useEffect(() => {
+    axios.get(`${BACKEND_URL}/api/v1/user/${id}`, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(response => {
+        setPblog(response.data.blog);
+        setLoading(false);
+    })
+},[id])
+return {
+    loading,
+    pblog
+}
+}
 
 export const useBlog = ({ id }: { id: string }) => {
     const [loading, setLoading] = useState(true);

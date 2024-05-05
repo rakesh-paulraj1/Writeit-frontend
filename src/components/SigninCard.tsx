@@ -18,8 +18,9 @@ export const  SigninCard = () => {
     async function signinhandler() {
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs);
-            const jwt = response.data.jwt;
-            localStorage.setItem("token", jwt);
+            const body = response.data.body;
+            localStorage.setItem("token", body.jwt);
+            localStorage.setItem("user", body.id);
             navigate("/dashboard ");
             toast.promise(
                 Promise.resolve(response),
