@@ -9,6 +9,7 @@ export interface Blog {
     "id": number
     "author": {
         "name": string
+        "id":number
     }
 }
 export const Profileblog= ({id}: {id: string}) => {
@@ -22,9 +23,12 @@ useEffect(() => {
             Authorization: localStorage.getItem("token")
         }
     }).then(response => {
-        setPblog(response.data.blog);
+        setPblog(response.data.pblog);
         setLoading(false);
-    })
+    }).catch(error => {
+        console.error("Error fetching user data:", error);
+        
+    });
 },[id])
 return {
     loading,

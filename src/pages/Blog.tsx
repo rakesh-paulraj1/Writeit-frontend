@@ -10,6 +10,7 @@ export const Blog = () => {
     const {loading, blog} = useBlog({
         id: id || ""
     });
+    
 
     if (loading || !blog) {
         return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">

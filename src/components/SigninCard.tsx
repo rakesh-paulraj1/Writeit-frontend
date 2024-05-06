@@ -18,9 +18,10 @@ export const  SigninCard = () => {
     async function signinhandler() {
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs);
-            const body = response.data.body;
-            localStorage.setItem("token", body.jwt);
-            localStorage.setItem("user", body.id);
+            const jwt= response.data.jwt;
+            const id = response.data.id;
+            localStorage.setItem("token", jwt);
+            localStorage.setItem("user",id);
             navigate("/dashboard ");
             toast.promise(
                 Promise.resolve(response),
@@ -38,7 +39,7 @@ export const  SigninCard = () => {
                 }
               );
             } catch (err:any) {
-                console.log(err.response.data);
+                console.log(err);
                 toast.error(
                     
                     

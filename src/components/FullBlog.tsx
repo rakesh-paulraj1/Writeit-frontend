@@ -1,8 +1,10 @@
 import { Blog } from "../hooks"
 import { Appbar } from "./Appbar"
+import { Link } from "react-router-dom";
 
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
+    console.log(blog.author.id);
     return <div className=" h-screen w-full bg-dot-white/[0.2] relative   bg-black/[0.98]  ">
         <Appbar />
         <div className=" pt-16 flex justify-center overflow-auto">
@@ -19,6 +21,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                     </div>
                 </div>
                 <div className="col-span-4">
+               <Link to={`/user/${blog.author.id}`}>
                 <div className="text-white bg-neutral-900 p-5 rounded-lg shadow-xl">
             <div className="text-2xl md:text-4xl pb-5">
                 Author
@@ -26,10 +29,10 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
             <div className="flex items-center">
                 <div className="w-5 h-5 p-4 mr-4 text-black text-lg md:text-xl flex justify-center items-center bg-white rounded-full ">{blog.author.name.toUpperCase()[0]}</div>
                 <div className="tex-lg md:text-xl mr-2">{blog.author.name}</div>
-                
             </div>
 
         </div>
+        </Link>
         </div>
                 
             </div>
