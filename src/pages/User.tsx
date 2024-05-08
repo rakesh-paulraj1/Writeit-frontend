@@ -22,20 +22,26 @@ export const User=()=>{
             </div>
         </div>
     }
-    return <div>
+    return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">
         <Appbar />
         <div className={cn('h-screen grid grid-cols-1 py-10 flex justify-center')}>
             <div className="my-20 w-[40%] md:w-[50%] mt-16 mb-16">
-            {pblog.posts.map(post => 
+           
+            {pblog.user.posts.map(post => 
                         <BlogCard
                             id={post.id}
-                            authorName={post.author.name || "Anonymous"} 
+                            authorName={ "Anonymous"} 
                             title={post.title}
                             content={post.content}
                             publishedDate={"2nd Feb 2024"} 
                         />
+                        
+                        
                     )}
             </div>
+            <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
+                    
+                </div>
         </div>
      
 
