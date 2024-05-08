@@ -4,17 +4,27 @@ import { BACKEND_URL } from "../config";
 
 
 export interface Blog {
-    "content": string;
-    "title": string;
-    "id": number
-    "author": {
-        "name": string
-        "id":number
+    content: string;
+    title: string;
+    id: number
+    author: {
+        name: string
+        id:number
     }
 }
+interface User {
+    id: number;
+    email: string;
+    name: string;
+    bio: string | null;
+    password: string;
+    posts: Blog[];
+    
+}
+
 export const Profileblog= ({id}: {id: string}) => {
     const [loading, setLoading] = useState(true);
-    const [pblog, setPblog] = useState<Blog>();
+    const [pblog, setPblog] = useState<User>();
 
     
 useEffect(() => {
@@ -23,7 +33,7 @@ useEffect(() => {
             Authorization: localStorage.getItem("token")
         }
     }).then(response => {
-        setPblog(response.data.pblog);
+        setPblog(response.data);
         setLoading(false);
     }).catch(error => {
         console.error("Error fetching user data:", error);
@@ -33,8 +43,7 @@ useEffect(() => {
 return {
     loading,
     pblog
-}
-}
+}}
 
 export const useBlog = ({ id }: { id: string }) => {
     const [loading, setLoading] = useState(true);
