@@ -9,9 +9,9 @@ export const Publish = () => {
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
 
-    return <div>
+    return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">
         <Appbar />
-        <div className="flex justify-center w-full pt-8"> 
+        <div className=" h-screen flex  justify-center w-full pt-8"> 
             <div className="max-w-screen-lg w-full">
                 <input onChange={(e) => {
                     setTitle(e.target.value)

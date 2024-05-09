@@ -30,7 +30,7 @@ export const User=()=>{
             {pblog.user.posts.map(post => 
                         <BlogCard
                             id={post.id}
-                            authorName={ "Anonymous"} 
+                            authorName={""} 
                             title={post.title}
                             content={post.content}
                             publishedDate={"2nd Feb 2024"} 
