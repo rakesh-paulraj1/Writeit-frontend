@@ -10,8 +10,9 @@ export const Appbar = () => {
     }
    function signoutHandler(){
     localStorage.removeItem('token')
-        localStorage.removeItem('username')
+        localStorage.removeItem('user')
         setShowDropDown(false)
+    
         navigate('/')
         navigate(0)
    }
@@ -33,9 +34,9 @@ export const Appbar = () => {
             </button>
             {showDropDown ?
                 <div className="z-50 absolute top-10 right-5 my-4 text-base list-none divide-y rounded-lg shadow bg-neutral-900 divide-gray-600" id="user-dropdown">
-                    <div className="px-4 py-3">
+                   <Link to={"/profile"}> <div className="px-4 py-3">
                         <span className="block text-sm truncate text-gray-400">{"User"}</span>
-                    </div>
+                    </div></Link>
                     <ul className="py-2" aria-labelledby="user-menu-button" onClick={signoutHandler}>
                         <li>
                             <a href="#" className="block px-4 py-2 text-sm   hover:bg-gray-600 text-gray-200 hover:text-white">Sign out</a>

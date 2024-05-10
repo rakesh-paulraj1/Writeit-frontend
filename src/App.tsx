@@ -5,6 +5,7 @@ import { Blog } from './pages/Blog'
 import {  Dashboard } from "./pages/Dashboard";
 import { Publish } from './pages/Publish';
 import { User } from './pages/User';
+import { Profile } from './pages/Profile';
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/publish" element={<Publish />} />
           <Route path="/user/:id" element={<User/>} />
+          <Route path="profile" element={<Profile/>}/>
+
         </Routes>
       </BrowserRouter>
     </>
