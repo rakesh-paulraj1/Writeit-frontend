@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.29.1",
+    "@editorjs/header": "^2.8.1",
+    "@editorjs/list": "^1.9.0",
     "@lexical/react": "^0.14.1",
     "@rakeshpaulraj/medium-clone-types": "^1.0.0",
     "@tiptap/extension-code-block-lowlight": "^2.2.4",
@@ -19,20 +22,22 @@
     "@tiptap/react": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",
     "axios": "^1.6.7",
-    "clsx": "^2.1.0",
-    "framer-motion": "^11.0.8",
+    "clsx": "^2.1.1",
+    "draft-js": "^0.11.7",
+    "framer-motion": "^11.2.5",
     "lexical": "^0.14.1",
     "lowlight": "^3.1.0",
     "lucide-react": "^0.359.0",
     "mini-svg-data-uri": "^1.4.4",
     "primereact": "^10.6.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-element-to-jsx-string": "^15.0.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.22.2",
     "recoil": "^0.7.7",
-    "tailwind-merge": "^2.2.1"
+    "tabler": "^1.0.0-alpha.8",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",

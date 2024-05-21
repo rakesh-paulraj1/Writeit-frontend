@@ -3,6 +3,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
+import { Editor } from "../components/Editor";
 
 export const Publish = () => {
     const [title, setTitle] = useState("");
@@ -15,12 +16,15 @@ export const Publish = () => {
             <div className="max-w-screen-lg w-full">
                 <input onChange={(e) => {
                     setTitle(e.target.value)
-                }} type="text" className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" />
+                }} type="text" className="w-full bg-black border border-gray-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" />
 
                 <TextEditor onChange={(e) => {
                     setDescription(e.target.value)
                 }} />
-                <button onClick={async () => {
+                <Editor/>
+           
+                
+                <button  onClick={async () => {
                     const response = await axios.post(`${BACKEND_URL}/api/v1/blogs`, {
                         title,
                         content: description
@@ -30,9 +34,12 @@ export const Publish = () => {
                         }
                     });
                     navigate(`/blog/${response.data.id}`)
-                }} type="submit" className="mt-4 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                    Publish post here
-                </button>
+                }}className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+          Post the Blog
+        </span>
+      </button>
             </div>
         </div>
     </div>
