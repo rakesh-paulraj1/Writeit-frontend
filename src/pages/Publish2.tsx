@@ -80,7 +80,7 @@ navigate(`/blog/${response.data.id}`);
 
 };
 
-return (
+return (d
 
 <div className="w-full bg-dot-white/[0.2] relative items-center bg-black/[0.98] justify-center overflow-auto">
 
