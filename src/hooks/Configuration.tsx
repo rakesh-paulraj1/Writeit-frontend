@@ -8,7 +8,7 @@ const editor = new EditorJS({
    */
   holder: 'editorjs',
   tools: { 
-    header: {
+    header: {gu
       class: Header, 
       inlineToolbar: ['link'] 
     }, 
