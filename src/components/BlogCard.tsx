@@ -17,14 +17,17 @@ export const BlogCard = ({
     content,
     publishedDate
 }: BlogCardProps) => {
+    function parseHtmlToText(htmlContent:string) {
+        return htmlContent.replace(/<[^>]*>|&nbsp;/g, ''); 
+      }
     return (
         <Link to={`/blog/${id}`} className="block mb-4">
-            <div className="h-full w-full px-4 py-2 overflow-hidden bg-black border border-white/[0.2] relative z-20">
+            <div className="h-full w-full px-4 py-2 overflow-hidden bg-black border border-white/[0.2] rounded relative z-20">
                 <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
                     {title}
                 </div>
                 <div className="pt-2 flex items-center">
-                    <Avatar name={authorName} />
+                   
                     <div className="pl-2 text-zinc-600 tracking-wide leading-relaxed text-sm">
                         {authorName}
                     </div>
@@ -33,7 +36,7 @@ export const BlogCard = ({
                     </div>
                 </div>
                 <div className={cn("mt-4 text-zinc-400 tracking-wide leading-relaxed text-sm")}>
-                    {content.slice(0, 100) + "..."}
+                    {parseHtmlToText(content.slice(0, 100) + "...")}
                 </div>
                 <div className="text-slate-500 text-sm font-thin pt-2">
                     {`${Math.ceil(content.length / 100)} minute(s) read`}

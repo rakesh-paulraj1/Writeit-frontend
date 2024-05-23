@@ -20,8 +20,10 @@ export const  SigninCard = () => {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs);
             const jwt= response.data.jwt;
             const id = response.data.id;
+            const name = response.data.name;
             localStorage.setItem("token", jwt);
             localStorage.setItem("user",id);
+            localStorage.setItem("username",name);
             navigate("/dashboard ");
             toast.promise(
                 Promise.resolve(response),

@@ -9,16 +9,19 @@ export const Dashboard = () => {
     if (loading) {
         return <div className=" w-full bg-dot-white/[0.2] relative  bg-black/[0.98]  justify-center overflow-auto">
             <Appbar /> 
-            <div  className="flex justify-center">
-                <div className="mt-16">
+            <div className={cn('h-screen grid grid-cols-1 py-10 flex justify-center')}>
+            <div className="my-20 w-[40%] md:w-[50%] mt-16 mb-16">
+               
                     <BlogSkeleton />
                     <BlogSkeleton />
                     <BlogSkeleton />
                     <BlogSkeleton />
                     <BlogSkeleton />
-                </div>
+                
             </div>
-        </div>
+            </div>
+            </div>
+       
     }
 
     return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">

@@ -2,14 +2,49 @@ import { Appbar } from "../components/Appbar"
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
-import {  useState} from "react";
-import { CKEditor,  } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-export const Publish = () => {
+import {  useRef, useState,useEffect} from "react";
+import JoditEditor from 'jodit-react';
+import { Jodit } from "jodit-react";
+export const Publish :React.FC= () => {
     const [title, setTitle] = useState("");
-  
-  
-
+    const [content,setContent] = useState("");
+    const JoditRef = useRef(null);
+  const navigate = useNavigate();
+    const Publish= async()=>{
+        console.log(content);
+        const response = await axios.post(`${BACKEND_URL}/api/v1/blogs`, {
+            title,
+            content,
+        }, {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        });
+        
+        navigate(`/blog/${response.data.id}`);
+    }
+    useEffect(() => {
+        const joditInstance = Jodit.make("#editor", {
+          uploader: {
+            insertImageAsBase64URI: true,
+          },
+          toolbarButtonSize: "small",
+          showCharsCounter: false,
+          showWordsCounter: false,
+          showXPathInStatusbar: false,
+        });
+    console.log(content);
+        JoditRef.current = joditInstance;
+        joditInstance.events.on("change", (newContent) => {
+            setContent(newContent);
+          });
+       
+        return () => {
+          if (JoditRef.current) {
+            JoditRef.current.events.off("change"); 
+          }
+        };
+      }, []);
 
     
     return <div className="w-full bg-dot-white/[0.2] relative  items-center  bg-black/[0.98]  justify-center overflow-auto">
@@ -19,42 +54,20 @@ export const Publish = () => {
             <input
   onChange={(e) => setTitle(e.target.value)}
   type="text"
-  className={`w-full bg-gray-300 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder:text-black-900`}
+  className={`w-full bg-white-300 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder:text-black-900`}
   placeholder="Title"
 />
-<CKEditor
-                    editor={ ClassicEditor }
-                    data="<p>Hello from CKEditor&nbsp;5!</p>"
-                    onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
-                    onChange={ ( event ) => {
-                        console.log( event );
-                    } }
-                    onBlur={ ( event, editor ) => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    onFocus={ ( event, editor ) => {
-                        console.log( 'Focus.', editor );
-                    } }
-                />
 
 
+    <div id="editor"></div>
 
-
-
-
-            
-            
-           
-                
-                <button  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-          Post the Blog
-        </span>
-      </button>
+                <div className="pt-4">
+      <button className="p-[3px] relative" onClick={Publish}>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-gray-500 rounded-lg" />
+        <div className="px-6 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+          Post the blog 
+        </div>
+      </button></div>
             </div>
         </div>
     </div>

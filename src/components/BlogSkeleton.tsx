@@ -1,30 +1,34 @@
-
+import { cn } from "../utils/cn";
 
 export const 
 BlogSkeleton = () => {
-    return <div role="status" className="animate-pulse">
-        <div className="p-4 border-b border-slate-200 pb-4 w-screen max-w-screen-md cursor-pointer">
-            <div className="flex">
-                <div className="h-4 w-4 bg-gray-200 rounded-full w-48 mb-4"></div>
-                <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                <div className="flex justify-center flex-col pl-2 flex justify-center flex-col">
-                   
-                </div>
-                <div className="pl-2 font-thin text-slate-500 text-sm flex justify-center flex-col">
-                    <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                </div>
+    return (
+        <div className="block mb-4">
+          <div className="h-full w-full px-4 py-2 overflow-hidden bg-black border border-white/[0.2] rounded relative z-20 animate-pulse">
+            <div className={cn("text-gray-400 font-bold tracking-wide text-xl mt-2")}>
+
+              
             </div>
-            <div className="text-xl font-semibold pt-2">
-                <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
+            <div className="pt-2 flex items-center">
+              
+              <div className="pl-2 animate-pulse">
+                <div className="h-2 bg-gray-300 rounded-full mb-1" />
+                <div className="h-2 bg-gray-300 rounded-full mb-1" />
+              </div>
+              <div className="pl-2 flex-grow animate-pulse">
+                <div className="h-2 bg-gray-300 rounded-full mb-1" />
+              </div>
             </div>
-            <div className="text-md font-thin">
-                <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
+            <div className={cn("mt-4 text-gray-400 tracking-wide leading-relaxed text-sm")}>
+              <div className="h-4 bg-gray-300 rounded-full animate-pulse mb-2" />
+              <div className="h-4 bg-gray-300 rounded-full animate-pulse mb-2" />
+              <div className="h-4 bg-gray-300 rounded-full animate-pulse" />
             </div>
-            <div className="text-slate-500 text-sm font-thin pt-4">
-                <div className="h-2 bg-gray-200 rounded-full mb-2.5"></div>
+            <div className="text-slate-500 text-sm font-thin pt-2">
+              <span className="h-2 bg-gray-300 rounded-full animate-pulse" />
             </div>
-        </div>
-    <span className="sr-only">Loading...</span>
-</div>
+          </div>
+          </div>
+        
+      );
 }

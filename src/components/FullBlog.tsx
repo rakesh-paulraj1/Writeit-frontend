@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
+    function parseHtmlToText(htmlContent:string) {
+        return htmlContent.replace(/<[^>]*>/g, ''); // Remove HTML tags
+      }
     console.log(blog.author.id);
     return <div className=" h-screen w-full bg-dot-white/[0.2] relative   bg-black/[0.98]  ">
         <Appbar />
@@ -17,7 +20,9 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         Post on 2nd December 2023
                     </div>
                     <div className="pt-4">
-                        {blog.content}
+                    {blog.content && (
+  <div className="pt-4" dangerouslySetInnerHTML={{ __html: blog.content }} />
+)}
                     </div>
                 </div>
                 <div className="col-span-4">
