@@ -14,6 +14,7 @@ export const Appbar = () => {
    function signoutHandler(){
     localStorage.removeItem('token')
         localStorage.removeItem('user')
+        localStorage.removeItem('username')
         setShowDropDown(false)
         navigate('/')
         navigate(0)

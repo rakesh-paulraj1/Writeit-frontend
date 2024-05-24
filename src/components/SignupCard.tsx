@@ -21,10 +21,14 @@ export const  SignupCard = () => {
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, postInputs);
             const jwt = response.data.jwt;
+            const id = response.data.id;
+            const name = response.data.name;
             localStorage.setItem("token", jwt);
+            localStorage.setItem("user", id);
+            localStorage.setItem("username", name);
             navigate("/dashboard");
             toast.promise(
-                Promise.resolve(response), // Wrap response in a resolved promise
+                Promise.resolve(response.data), 
                 {
                     loading: "Signing in...",
                     error: "Error Signing in",
@@ -38,13 +42,10 @@ export const  SignupCard = () => {
                     },
                 }
             );
-        } catch (err:any) {
-            console.log(err.response.data);
+        } catch (err) {
+            console.log(err.response?.data?.error || err.message);
             toast.error(
-                // Wrap response in a resolved promise
-                
-                    "Error Signing up",
-        
+                err.response.message,
                 {
                     style: {
                         minWidth: '250px',
@@ -53,8 +54,7 @@ export const  SignupCard = () => {
                     },
                 }
             );
-        }
-    }
+        }}
 
     return <div className="h-screen flex justify-center items-center">
         <div className="h-[470px] w-[360px] bg-neutral-950 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">
