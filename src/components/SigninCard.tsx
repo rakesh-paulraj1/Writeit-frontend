@@ -25,39 +25,32 @@ export const  SigninCard = () => {
             localStorage.setItem("user",id);
             localStorage.setItem("username",name);
             navigate("/dashboard ");
-            toast.promise(
-                Promise.resolve(response),
-                {
-                  loading: "Saving blog",
-                  error: "An error occured while saving blog!",
-                  success: "Successfully saved blog",
-                },
-                {
-                  style: {
+           
+            toast.success('Successfully logged in', {
+               
+                style: {
                     minWidth: '250px',
                     backgroundColor: '#18181b',
                     color: '#d4d4d8',
-                  },
-                }
-              );
-            } catch (err:any) {
-                console.log(err);
-                toast.error(
-                    
-                    
-                        "Error Signing in",
-            
-                    {
-                        style: {
-                            minWidth: '250px',
-                            backgroundColor: '#18181b',
-                            color: '#d4d4d8',
-                        },
-                    }
-                );
-            }
-           
-    }
+                },
+            });}
+
+         
+         catch (errors) {
+        
+                console.log(errors.response.data.message[0].message);
+                
+                            toast.error(
+                              errors.response.data.message[0].message,
+                                {
+                                    style: {
+                                        minWidth: '250px',
+                                        backgroundColor: '#18181b',
+                                        color: '#d4d4d8',
+                                    },
+                                }
+                            );
+                        }}
     
     return <div className="h-screen flex justify-center items-center">
         <div  className="h-[390px] w-[360px] bg-neutral-950 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">

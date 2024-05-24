@@ -42,10 +42,12 @@ export const  SignupCard = () => {
                     },
                 }
             );
-        } catch (err) {
-            console.log(err.response?.data?.error || err.message);
+        } catch (errors) {
+        
+console.log(errors.response.data.message[0].message);
+
             toast.error(
-                err.response.message,
+              errors.response.data.message[0].message,
                 {
                     style: {
                         minWidth: '250px',
