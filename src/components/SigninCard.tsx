@@ -38,10 +38,10 @@ export const  SigninCard = () => {
          
          catch (errors) {
         
-                console.log(errors.response.data.message[0].message);
+                console.log(errors.response.data.message[0].message || errors.response.data.message);
                 
                             toast.error(
-                              errors.response.data.message[0].message,
+                              (errors.response.data.message[0].message || errors.response.data.message),
                                 {
                                     style: {
                                         minWidth: '250px',
