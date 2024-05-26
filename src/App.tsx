@@ -19,7 +19,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/publish" element={<Publish />} />
           <Route path="/user/:id" element={<User/>} />
-          <Route path="profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+         
 
         </Routes>
       </BrowserRouter>

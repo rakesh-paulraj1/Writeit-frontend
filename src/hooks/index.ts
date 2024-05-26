@@ -34,12 +34,13 @@ useEffect(() => {
         }
     }).then(response => {
         setPblog(response.data);
+        
         setLoading(false);
     }).catch(error => {
         console.error("Error fetching user data:", error);
         
     });
-},[id])
+},[])
 return {
     loading,
     pblog

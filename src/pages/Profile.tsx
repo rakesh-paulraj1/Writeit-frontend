@@ -3,20 +3,37 @@ import { cn } from "../utils/cn";
 import { Profileblog } from "../hooks";
 import { BlogCard } from "../components/BlogCard";
 import { Spinner } from "../components/Spinner";
-import { Link } from "react-router-dom"; // Assuming you're using react-router for navigation
+import { useState } from "react";
+import { ConfirmDialog } from 'primereact/confirmdialog';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../config";
 
 export const Profile = () => {
     const id = localStorage.getItem('user');
-    const { loading, pblog } = Profileblog({ id: id || "" });
-   const user =localStorage.getItem('username');
-    const handleEditBio = () => {
-        // Handle the edit bio action, e.g., open a modal or navigate to an edit page
-        console.log("Edit bio button clicked");
+    console.log(id);
+    const [visible, setVisible] = useState(false);
+    const { loading, pblog } = Profileblog({ id: id });
+    const navigate = useNavigate();
+    const handleDeleteAccount = () => {
+     try{
+      axios.delete(`${BACKEND_URL}/api/v1/user/deleteuser/${id}`, {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        });
+       
+        setVisible(false); 
+         
+     }catch{
+        setVisible(false); 
+     }
+       
     }
 
-    const handleDeleteBio = () => {
-        // Handle the delete bio action
-        console.log("Delete bio button clicked");
+    const donthandle = () => {
+        console.log("Delete blog button clicked");
+        setVisible(false); 
     }
 
     if (loading || !pblog) {
@@ -44,35 +61,38 @@ export const Profile = () => {
                             authorName={""} 
                             title={post.title}
                             content={post.content}
-                            publishedDate={"2nd Feb 2024"} 
                         />
                     )}
                 </div>
                 <div className="col-span-1 my-20 w-[90%] md:w-[80%] mx-auto">
                     <div className="text-white bg-neutral-900 p-5 rounded-lg shadow-xl flex flex-col items-center">
                         <div className="w-5 h-5 p-4 text-black text-lg md:text-xl flex justify-center items-center bg-white rounded-full">
-                            {user.toUpperCase()[0]}
+                            {pblog.user.name.toUpperCase()[0]}
                         </div>
                         <div className="text-2xl md:text-4xl mt-4">
-                            {user}
+                            {pblog.user.name}
                         </div>
                         <div className="flex mt-4 space-x-2">
                             <button 
-                                onClick={handleEditBio} 
-                                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-700"
-                            >
-                                Edit Bio
-                            </button>
-                            <button 
-                                onClick={handleDeleteBio} 
+                                onClick={() => setVisible(true)} 
                                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
                             >
-                                Delete Bio
+                                Delete Account
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <ConfirmDialog 
+                visible={visible} 
+                onHide={() => setVisible(false)} 
+                message="Are you sure you want to proceed?" 
+                header="Account deletion" 
+                icon="pi pi-exclamation-triangle" 
+                accept={handleDeleteAccount} 
+                reject={donthandle} 
+            />
         </div>
     );
 }
