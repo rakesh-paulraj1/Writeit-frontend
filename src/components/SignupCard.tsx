@@ -20,9 +20,10 @@ export const  SignupCard = () => {
     async function signuphandler() {
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, postInputs);
-            const jwt = response.data.jwt;
-            const id = response.data.id;
-            const name = response.data.name;
+            const jwt = response.data.body.jwt;
+            const id = response.data.body.id;
+            const name = response.data.body.username;
+             
             localStorage.setItem("token", jwt);
             localStorage.setItem("user", id);
             localStorage.setItem("username", name);

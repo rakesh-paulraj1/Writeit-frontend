@@ -2,7 +2,7 @@ import { Appbar } from "../components/Appbar";
 import { cn } from "../utils/cn";
 import { Profileblog } from "../hooks";
 import { BlogCard } from "../components/BlogCard";
-import { Spinner } from "../components/Spinner";
+import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useState } from "react";
 import { ConfirmDialog } from 'primereact/confirmdialog';
 import axios from "axios";
@@ -24,7 +24,10 @@ export const Profile = () => {
         });
        
         setVisible(false); 
-         
+         localStorage.removeItem('token')
+         localStorage.removeItem('user')
+         localStorage.removeItem('username')
+         navigate('/signup')
      }catch{
         setVisible(false); 
      }
@@ -40,11 +43,17 @@ export const Profile = () => {
         return (
             <div className="w-full bg-dot-white/[0.2] relative items-center bg-black/[0.98] justify-center overflow-auto">
                 <Appbar />
-                <div className="h-screen flex flex-col justify-center">
-                    <div className="flex justify-center">
-                        <Spinner />
-                    </div>
-                </div>
+                <div className={cn('h-screen grid grid-cols-1 py-10 flex justify-center')}>
+            <div className="my-20 w-[40%] md:w-[50%] mt-16 mb-16">
+               
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                    <BlogSkeleton />
+                
+            </div>
+            </div>
             </div>
         );
     }
@@ -56,7 +65,7 @@ export const Profile = () => {
                 <div className="col-span-1 md:col-span-3 my-20 w-[90%] md:w-[80%] mx-auto">
                     {pblog.user.posts.map(post => 
                         <BlogCard
-                            key={post.id} // added key prop to avoid warnings in console
+                            key={post.id} 
                             id={post.id}
                             authorName={""} 
                             title={post.title}
