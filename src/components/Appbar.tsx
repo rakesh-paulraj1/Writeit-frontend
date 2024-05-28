@@ -20,7 +20,7 @@ export const Appbar = () => {
         navigate(0)
    }
    const name=localStorage.getItem('username');
-    return <nav className="fixed border-b border-slate-900 z-20 top-0 left-0 right-0 backdrop-blur-sm  flex justify-between py-3 px-16">
+    return <nav className="fixed border-b border-slate-900 z-20 top-0 left-0 right-0 backdrop-blur-sm flex justify-between py-3 px-4 md:px-16">
      
        <div><Link to={'/dashboard'} >
        <HoverBorderGradient

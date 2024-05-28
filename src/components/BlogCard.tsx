@@ -22,7 +22,7 @@ export const BlogCard = ({
       }
     return (
         <Link to={`/blog/${id}`} className="block mb-4">
-            <div className="h-full w-full px-4 py-2 overflow-hidden bg-black border border-white/[0.2] rounded relative z-20">
+            <div className=" h-full w-full px-4 py-2 overflow-hidden bg-black border border-white/[0.2] rounded relative z-20">
                 <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
                     {title}
                 </div>

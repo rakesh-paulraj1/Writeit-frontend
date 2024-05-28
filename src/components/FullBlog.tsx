@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const FullBlog = ({ blog }: {blog: Blog}) => {
     
     console.log(blog.author.id);
-    return <div className=" h-screen w-full bg-dot-white/[0.2] relative   bg-black/[0.98]  ">
+    return <div className=" h-screen w-full bg-dot-white/[0.2] relative   bg-black/[0.98] overflow-auto ">
         <Appbar />
         <div className=" pt-16 flex justify-center overflow-auto">
             <div className="grid grid-cols-12 px-10 w-full pt-200 max-w-screen-xl pt-12">
