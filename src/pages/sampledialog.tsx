@@ -1,8 +1,8 @@
 
-import React, { useState, useRef } from 'react';
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import  { useState, useRef } from 'react';
+import { ConfirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
-import { Button } from 'primefaces/button';
+import { Button } from 'primereact/button';
 
 export default function DeclarativeDemo() {
     const [visible, setVisible] = useState<boolean>(false);
@@ -19,7 +19,7 @@ export default function DeclarativeDemo() {
     return (
         <>
             <Toast ref={toast} />
-            <ConfirmDialog group="declarative"  visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
+            <ConfirmDialog   visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
             <div className="card flex justify-content-center">
                 <Button onClick={() => setVisible(true)} icon="pi pi-check" label="Confirm" />

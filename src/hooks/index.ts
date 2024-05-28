@@ -13,6 +13,7 @@ export interface Blog {
     }
 }
 interface User {
+    user: any;
     id: number;
     email: string;
     name: string;

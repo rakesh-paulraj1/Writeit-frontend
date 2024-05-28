@@ -43,7 +43,7 @@ export const  SignupCard = () => {
                     },
                 }
             );
-        } catch (errors) {
+        } catch (errors: any) {
         
 console.log(errors.response.data.message[0].message || errors.response.data.message);
 

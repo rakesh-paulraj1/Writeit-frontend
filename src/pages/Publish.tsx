@@ -9,7 +9,8 @@ import toast, { Toaster }  from 'react-hot-toast';
 export const Publish: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const JoditRef = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const JoditRef = useRef<any>();
   const navigate = useNavigate();
 
   const publish = async () => {
@@ -49,7 +50,7 @@ export const Publish: React.FC = () => {
 
     return () => {
       if (JoditRef.current) {
-        JoditRef.current.events.off("change"); 
+        JoditRef.current.events.off("change");
       }
     };
   }, []);
@@ -65,7 +66,7 @@ export const Publish: React.FC = () => {
             className={`w-full bg-white-300 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder:text-black-900`}
             placeholder="Title"
           />
-          <div id="editor"></div>
+          <div className="pt-4" id="editor"></div>
           <div className="pt-4">
             <button className="p-[3px] relative" onClick={publish}>
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-gray-500 rounded-lg" />

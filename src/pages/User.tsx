@@ -5,6 +5,7 @@ import { Spinner } from "../components/Spinner";
 import { cn } from "../utils/cn";
 import { BlogCard } from "../components/BlogCard";
 
+
 export const User = () => {
     const { id } = useParams();
     console.log(id);
@@ -30,14 +31,13 @@ export const User = () => {
             <Appbar />
             <div className={cn('h-screen grid grid-cols-1 md:grid-cols-4 py-10')}>
                 <div className="col-span-1 md:col-span-3 my-20 w-[90%] md:w-[80%] mx-auto">
-                    {pblog.user.posts.map(post => 
+                    {pblog.user.posts.map((post: { id:number; title: string; content: string; }) => 
                         <BlogCard
                             key={post.id} // added key prop to avoid warnings in console
                             id={post.id}
-                            authorName={""} 
+                            authorName={""}
                             title={post.title}
-                            content={post.content}
-                        />
+                            content={post.content} publishedDate={""}                        />
                     )}
                 </div>
                 <div className="col-span-1 my-20 w-[90%] md:w-[80%] mx-auto">
