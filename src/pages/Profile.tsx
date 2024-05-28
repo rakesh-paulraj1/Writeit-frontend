@@ -63,11 +63,11 @@ export const Profile = () => {
             <Appbar />
             <div className={cn('h-screen grid grid-cols-1 md:grid-cols-4 py-10')}>
                 <div className="col-span-1 md:col-span-3 my-20 w-[90%] md:w-[80%] mx-auto">
-                    {pblog.user.posts.map((post: { id: number ; title: string; content: string; }) =>
+                    {pblog.user.posts.map((post: { id: number ; title: string; content: string; name:string; }) =>
                         <BlogCard
                             key={post.id}
                             id={post.id}
-                            authorName={""}
+                            authorName={post.name}
                             title={post.title}
                             content={post.content} publishedDate={""}                        />
                     )}
