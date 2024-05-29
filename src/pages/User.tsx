@@ -1,9 +1,10 @@
 import { Appbar } from "../components/Appbar";
 import { Profileblog } from "../hooks";
 import { useParams } from "react-router-dom";
-import { Spinner } from "../components/Spinner";
+import { ProgressSpinner } from "primereact/progressspinner";
 import { cn } from "../utils/cn";
 import { BlogCard } from "../components/BlogCard";
+
 
 
 export const User = () => {
@@ -19,7 +20,7 @@ export const User = () => {
                 <Appbar />
                 <div className="h-screen flex flex-col justify-center">
                     <div className="flex justify-center">
-                        <Spinner />
+                        <ProgressSpinner/>
                     </div>
                 </div>
             </div>
@@ -33,7 +34,7 @@ export const User = () => {
                 <div className="col-span-1 md:col-span-3 my-20 w-[90%] md:w-[80%] mx-auto">
                     {pblog.user.posts.map((post: { id:number; title: string; content: string; }) => 
                         <BlogCard
-                            key={post.id} // added key prop to avoid warnings in console
+                            key={post.id} 
                             id={post.id}
                             authorName={""}
                             title={post.title}

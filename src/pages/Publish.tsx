@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { Jodit } from "jodit-react";
 import toast, { Toaster }  from 'react-hot-toast';
-
+import { cn } from "../utils/cn";
 export const Publish: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -37,6 +37,7 @@ export const Publish: React.FC = () => {
       uploader: {
         insertImageAsBase64URI: true,
       },
+     
       toolbarButtonSize: "small",
       showCharsCounter: false,
       showWordsCounter: false,
@@ -60,12 +61,18 @@ export const Publish: React.FC = () => {
       <Appbar />
       <div className="h-screen flex justify-center w-full pt-8 mt-16"> 
         <div className="max-w-screen-lg w-full">
+        <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
+                    {"Title"}
+                </div>
           <input
             onChange={(e) => setTitle(e.target.value)}
             type="text"
             className={`w-full bg-white-300 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder:text-black-900`}
             placeholder="Title"
           />
+          <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
+                    {"Blog content"}
+                </div>
           <div className="pt-4" id="editor"></div>
           <div className="pt-4">
             <button className="p-[3px] relative" onClick={publish}>

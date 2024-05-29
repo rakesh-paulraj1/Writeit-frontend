@@ -6,6 +6,7 @@ import {  Dashboard } from "./pages/Dashboard";
 import { Publish } from './pages/Publish';
 import { User } from './pages/User';
 import { Profile } from './pages/Profile';
+import { Blogeditor } from './pages/Blogeditor';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
           <Route path="/publish" element={<Publish />} />
           <Route path="/user/:id" element={<User/>} />
           <Route path="/profile" element={<Profile/>}/>
-         
+          <Route path="/editblog/:id" element={<Blogeditor/>}/>
 
         </Routes>
       </BrowserRouter>

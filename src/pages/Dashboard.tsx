@@ -1,6 +1,6 @@
+import { ProgressSpinner } from "primereact/progressspinner";
 import { Appbar } from "../components/Appbar"
 import { BlogCard } from "../components/BlogCard"
-import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks";
 import { cn } from "../utils/cn";
 const appbarHeight = '4rem';
@@ -13,11 +13,7 @@ export const Dashboard = () => {
             <div className={cn('h-screen grid grid-cols-1 py-10 flex justify-center')}>
             <div className="my-20 w-[40%] md:w-[50%] mt-16 mb-16">
                
-                    <BlogSkeleton />
-                    <BlogSkeleton />
-                    <BlogSkeleton />
-                    <BlogSkeleton />
-                    <BlogSkeleton />
+                <ProgressSpinner/>
                 
             </div>
             </div>

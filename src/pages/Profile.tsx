@@ -1,7 +1,7 @@
 import { Appbar } from "../components/Appbar";
 import { cn } from "../utils/cn";
 import { Profileblog } from "../hooks";
-import { BlogCard } from "../components/BlogCard";
+import {ProfileBlogCard} from "../components/ProfileBlogCard";
 import { BlogSkeleton } from "../components/BlogSkeleton";
 import {  useState } from "react";
 import { ConfirmDialog } from 'primereact/confirmdialog';
@@ -33,7 +33,7 @@ export const Profile = () => {
         }
 
     }
-
+   
     const donthandle = () => {
         console.log("Delete blog button clicked");
         setVisible(false);
@@ -64,12 +64,12 @@ export const Profile = () => {
             <div className={cn('h-screen grid grid-cols-1 md:grid-cols-4 py-10')}>
                 <div className="col-span-1 md:col-span-3 my-20 w-[90%] md:w-[80%] mx-auto">
                     {pblog.user.posts.map((post: { id: number ; title: string; content: string; name:string; }) =>
-                        <BlogCard
+                        <ProfileBlogCard
                             key={post.id}
                             id={post.id}
                             authorName={post.name}
                             title={post.title}
-                            content={post.content} publishedDate={""}                        />
+                            content={post.content} publishedDate={""}              />
                     )}
                 </div>
                 <div className="col-span-1 my-20 w-[90%] md:w-[80%] mx-auto">
