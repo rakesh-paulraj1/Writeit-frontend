@@ -33,7 +33,7 @@ export const ProfileBlogCard = ({
                 },
               }
             )
-            navigate("/profile")
+            navigate("/dashboard")
         }catch(e) {
             console.error(e+"error on deleting")
 

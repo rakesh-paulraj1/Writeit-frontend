@@ -95,17 +95,22 @@ export const Blogeditor: React.FC = () => {
                     {"Title"}
                 </div>
                 <input
-  onChange={(e) => setTitle(e.target.value)}
-  type="text"
-  className={`w-full bg-white-300 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder:text-black-900`}
-  placeholder="Title"
-  value={blog.title} 
-/>
+      onChange={(e) => setTitle(e.target.value)}
+      type="text"
+      className={`w-full bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 placeholder:text-gray-900`}
+      placeholder="Update the title !!"
+      
+      
+    />
           <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
                     {"Blog content"}
                 </div>
           <div className="pt-4" ref={editorRef} id="editor"></div>
+          <div className={cn("text-zinc-100 font-bold tracking-wide text-xl mt-2")}>
+                  
+                </div>
           <div className="pt-4">
+            
             <button className="p-[3px] relative" onClick={publish}>
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-gray-500 rounded-lg" />
               <div className="px-6 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
