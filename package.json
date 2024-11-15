@@ -40,6 +40,7 @@
     "react-router-dom": "^6.22.2",
     "react-toastify": "^10.0.5",
     "recoil": "^0.7.7",
+    "sonner": "^1.7.0",
     "tabler": "^1.0.0-alpha.8",
     "tailwind-merge": "^2.3.0"
   },

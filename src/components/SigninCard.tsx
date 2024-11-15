@@ -17,27 +17,30 @@ export const  SigninCard = () => {
 
     async function signinhandler() {
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs);
-            const jwt = response.data.jwt;
-            const id = response.data.id;
-            const name = response.data.name;
-            localStorage.setItem("token", jwt);
-            localStorage.setItem("user", id);
-            localStorage.setItem("username", name);
-            navigate("/dashboard ");
-
-            toast.success('Successfully logged in', {
-
-                style: {
-                    minWidth: '250px',
-                    backgroundColor: '#18181b',
-                    color: '#d4d4d8',
-                },
-            });
-        }
-
-
-        catch (error: any) {
+            toast.promise(
+ axios.post(`${BACKEND_URL}/api/v1/user/signin`, postInputs).then((response)=>{
+    const id = response.data.id;
+    const jwt = response.data.jwt;
+    const name = response.data.name;
+    localStorage.setItem("token", jwt);
+    localStorage.setItem("user", id);
+    localStorage.setItem("username", name);
+    navigate("/dashboard ");
+ }),{
+    loading: "Signing in...",
+    error: (err) => {
+        const errorMessage = err?.response?.data?.message || "An unexpected error occurred";
+        return errorMessage;
+    },
+    success: "Successfully Signed in",
+ },{
+    style: {
+        minWidth: '250px',
+        backgroundColor: '#18181b',
+        color: '#d4d4d8',
+    },
+});
+    }catch (error: any) {
 
             console.log(error.response.data.message[0].message || error.response.data.message);
 

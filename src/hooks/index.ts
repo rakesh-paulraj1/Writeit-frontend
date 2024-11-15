@@ -75,16 +75,22 @@ export const useBlogs = () => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blogs/bulk`, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
+       axios.get(`${BACKEND_URL}/api/v1/blogs/bulk`,{
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    })
+        .then(response => {
+            console.log(response); 
+            setBlogs(response.data.blogs);
+            setLoading(false);
         })
-            .then(response => {
-                setBlogs(response.data.blogs);
-                setLoading(false);
-            })
-    }, [])
+        .catch(error => {
+            console.error('Error fetching blogs:', error);
+            setLoading(false);
+        });
+    }, []);
+  
 
     return {
         loading,
